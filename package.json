@@ -1,6 +1,6 @@
 {
   "name": "typeorm-aurora-data-api-driver",
-  "version": "0.0.0-development",
+  "version": "2.4.4",
   "description": "",
   "keywords": [],
   "main": "dist/typeorm-aurora-data-api-driver.umd.js",
