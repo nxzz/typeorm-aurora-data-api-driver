@@ -1131,29 +1131,37 @@
             switch (metadata.type) {
                 case Boolean:
                     value = !!value;
+                    break;
                 case 'datetime':
                 case Date:
                 case 'timestamp':
                 case 'timestamp with time zone':
                 case 'timestamp without time zone':
                     value = typeof value === 'string' ? new Date(value + ' GMT+0') : value;
+                    break;
                 case 'date':
                     value = dateToDateString(value);
+                    break;
                 case 'year':
                     value = typeof value === 'string' ? new Date(value).getUTCFullYear() : value.getUTCFullYear();
+                    break;
                 case 'time':
                     value = value;
+                    break;
                 case 'set':
                 case 'simple-array':
                     value = typeof value === 'string' ? stringToSimpleArray(value) : value;
+                    break;
                 case 'json':
                 case 'simple-json':
                     value = typeof value === 'string' ? JSON.parse(value) : value;
+                    break;
                 case 'enum':
                 case 'simple-enum':
                     if (metadata.enum && !Number.isNaN(value) && metadata.enum.indexOf(parseInt(value, 10)) >= 0) {
                         value = parseInt(value, 10);
                     }
+                    break;
             }
             if (metadata.transformer)
                 value = ApplyValueTransformers_2.transformFrom(metadata.transformer, value);
